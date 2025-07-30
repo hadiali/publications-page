@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <!--  -->
-<!-- Clickable URL Button -->
-<div style="padding:10px; background:#f4f4f4; text-align:center;">
-    <a href="https://script.google.com/macros/s/AKfycbwXICdezvKvJe3twSKNr6ZpYYrtAg4jfANyTp1BuWc/dev" 
-       target="_blank" 
-       style="text-decoration:none; font-family:Arial, sans-serif; background:#007BFF; color:white; padding:10px 20px; border-radius:5px;">
-        Open Script in New Tab
-    </a>
-</div>
+<head>
+    <meta charset="UTF-8">
+    <title>Publications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">Loading publications...</div>
 
-<body style="margin:0;">
-    <iframe 
-        src="https://script.google.com/macros/s/AKfycbwXICdezvKvJe3twSKNr6ZpYYrtAg4jfANyTp1BuWc/dev"
-        style="width:100%; height:100vh; border:none;">
-    </iframe>
+    <script>
+        // Your Google Apps Script Web App URL
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwXICdezvKvJe3twSKNr6ZpYYrtAg4jfANyTp1BuWc/dev";
+
+        fetch(SCRIPT_URL)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("content").innerHTML = data;
+            })
+            .catch(error => {
+                document.getElementById("content").innerHTML =
+                    "⚠️ Failed to load publications.";
+                console.error(error);
+            });
+    </script>
 </body>
-
 </html>
-
